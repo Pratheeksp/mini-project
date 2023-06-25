@@ -1,0 +1,6 @@
+name: mini-proj
+runtime:
+  name: python
+  options:
+    virtualenv: venv
+description: mini-project

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head>
+  <title>CodeCloud - {% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for("static", filename="bootstrap.min.css") }}">
+  <link rel="stylesheet" href="{{ url_for("static", filename='styles.css') }}">
+  <script src="{{ url_for("static", filename="bootstrap.min.js") }}"></script>
+</head>
+<body style="background: url(../static/bg.jpeg)no-repeat center center fixed; background-size: cover;">
+  <div class="container p-2">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <a href="{{ url_for("index") }}" class="d-flex justify-content-center mb-3 mb-md-0 me-md-auto text-decoration-none" style="width:100%; color: white;">
+        <center><span class="fs-1">CodeCloud</span></center>
+      </a>
+      {% block nav %}{% endblock %}
+    </header>
+  </div>
+  <section class="container-md px-4">
+    <div>
+      <header class="row gy-4">
+        <span class="fs-4" style="color: white;">{% block header %}{% endblock %}</span>
+        {% for category, message in get_flashed_messages(with_categories=true) %}
+        <div class="alert alert-{{ category }}" role="alert">{{ message }}</div>
+        {% endfor %}
+      </header>
+    </div>
+    {% block content %}{% endblock %}
+  </section>
+</body>
